@@ -1,36 +1,7 @@
 set nocompatible
 filetype off
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
-endif
-
-"insert here your Neobundle plugins"
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'sbdchd/neoformat'
-NeoBundle 'prettier/vim-prettier'
-NeoBundle 'scrooloose/syntastic'
-
-filetype plugin indent on
-call neobundle#end()
-
-"short cut command is berrow"
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
-
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -67,18 +38,40 @@ Plug 'prettier/vim-prettier', {
 "TS highlight
 Plug 'leafgarland/typescript-vim'
 
-"プラグ
+"VScode風テーマ
 Plug 'tomasiser/vim-code-dark'
+
+"ツリー
+Plug 'scrooloose/nerdtree'
+
+"ステータスバー
+Plug 'vim-airline/vim-airline'
+
+"ステータスバーのテーマパック
+Plug 'vim-airline/vim-airline-themes'
+
+"gitコマンド
+Plug 'tpope/vim-fugitive'
+
+"フォーマッタ
+Plug 'sbdchd/neoformat'
+
+"Prettier
+Plug 'prettier/vim-prettier'
+
+"エラーチェック
+Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
+
 call plug#end()
 " You can revert the settings after the call like so:
 "   filetype indent off   " Disable file-type-specific indentation
 "   syntax off            " Disable syntax highlighting
 
 "----------------------------------------
-" 検索
+" Search
 "----------------------------------------
 " 検索するときに大文字小文字を区別しない
 set ignorecase
@@ -92,7 +85,7 @@ set incsearch
 set hlsearch
 
 "----------------------------------------
-" 見た目
+" Appearance
 "----------------------------------------
 "
 set number
@@ -110,10 +103,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 0
 
 ""----------------------------------------
-" format
+" Format
 "----------------------------------------
 "
-
 " インデント幅
 set shiftwidth=2
 " タブキー押下時に挿入される文字幅を指定
@@ -124,7 +116,10 @@ set tabstop=2
 let g:neoformat_try_node_exe = 1
 packloadall
 
-"Prettier
+""----------------------------------------
+" Prettier
+"----------------------------------------
+"
 augroup fmt
 autocmd!
 autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
@@ -132,9 +127,6 @@ augroup END
 
 "eslint
 let g:syntastic_javascript_checkers=['eslint']
-
-" ここから下は Syntastic のおすすめの設定
-" ref. https://github.com/scrooloose/syntastic#settings
 
 " エラー行に sign を表示
 let g:syntastic_enable_signs = 1
@@ -146,3 +138,10 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 " :wq で終了する時もチェックする
 let g:syntastic_check_on_wq = 0
+
+""----------------------------------------
+" ショートカット
+"----------------------------------------
+"
+"short cut command is berrow"
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
