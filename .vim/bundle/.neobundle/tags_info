@@ -1,4 +1,7 @@
+neoformat
 nerdtree
+syntastic
 vim-airline
 vim-airline-themes
 vim-fugitive
+vim-prettier
