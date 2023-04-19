@@ -145,3 +145,4 @@ let g:syntastic_check_on_wq = 0
 "
 "short cut command is berrow"
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
