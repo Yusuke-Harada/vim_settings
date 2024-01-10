@@ -3,41 +3,6 @@ filetype off
 
 call plug#begin()
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-default branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
-"Prettier
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
-"TS highlight
-Plug 'leafgarland/typescript-vim'
-
 "VScode風テーマ
 Plug 'tomasiser/vim-code-dark'
 
@@ -55,9 +20,6 @@ Plug 'tpope/vim-fugitive'
 
 "フォーマッタ
 Plug 'sbdchd/neoformat'
-
-"Prettier
-Plug 'prettier/vim-prettier'
 
 "エラーチェック
 Plug 'scrooloose/syntastic'
@@ -115,29 +77,6 @@ set tabstop=2
 
 let g:neoformat_try_node_exe = 1
 packloadall
-
-""----------------------------------------
-" Prettier
-"----------------------------------------
-"
-augroup fmt
-autocmd!
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
-augroup END
-
-"eslint
-let g:syntastic_javascript_checkers=['eslint']
-
-" エラー行に sign を表示
-let g:syntastic_enable_signs = 1
-" location list を常に更新
-let g:syntastic_always_populate_loc_list = 0
-" location list を常に表示
-let g:syntastic_auto_loc_list = 0
-" ファイルを開いた時にチェックを実行する
-let g:syntastic_check_on_open = 1
-" :wq で終了する時もチェックする
-let g:syntastic_check_on_wq = 0
 
 ""----------------------------------------
 " ショートカット
